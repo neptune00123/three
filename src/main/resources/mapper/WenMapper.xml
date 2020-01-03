@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.VoDao">
+    <cache/>
+    <select id="queryalbum" resultType="com.baizhi.vo.Wen">
+        select TITLE,IMG as thumbnail,SCORE,AUTHOR,BROADCASTER,COUNT as set_count,BRIEF,CREATE_DATE from album where id= #{id}
+    </select>
+    <select id="querylist" resultType="com.baizhi.vo.List">
+        select title,size,duration,src as download_url from chapter where album_id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.EchartsDao">
+    <cache/>
+    <select id="querymon" resultType="Integer">
+        SELECT count(id) from t_user WHERE DATE('2019-12-31')-DATE(CREATE_DATE)=1
+    </select>
+    <select id="querytue" resultType="Integer">
+        SELECT count(id) from t_user WHERE DATE('2019-12-31')-DATE(CREATE_DATE)=2
+    </select>
+    <select id="querywed" resultType="Integer">
+        SELECT count(id) from t_user WHERE DATE('2019-12-31')-DATE(CREATE_DATE)=3
+    </select>
+    <select id="querythu" resultType="Integer">
+        SELECT count(id) from t_user WHERE DATE('2019-12-31')-DATE(CREATE_DATE)=4
+    </select>
+    <select id="queryfir" resultType="Integer">
+        SELECT count(id) from t_user WHERE DATE('2019-12-31')-DATE(CREATE_DATE)=5
+    </select>
+    <select id="querysat" resultType="Integer">
+        SELECT count(id) from t_user WHERE DATE('2019-12-31')-DATE(CREATE_DATE)=6
+    </select>
+    <select id="querysun" resultType="Integer">
+        SELECT count(id) from t_user WHERE DATE('2019-12-31')-DATE(CREATE_DATE)=7
+    </select>
+    <resultMap id="BannerDto" type="com.baizhi.vo.Month">
+        <result property="month" column="month"></result>
+        <result column="count" property="count"></result>
+    </resultMap>
+    <select id="querymonth" resultType="Integer">
+    select count(id) from t_user where Date_ForMat(CREATE_DATE,"%m") = #{id}
+</select>
+    <select id="querypeople" resultType="com.baizhi.vo.People">
+        select count(id) as value ,address as name from t_user GROUP BY ADDRESS
+    </select>
+</mapper>

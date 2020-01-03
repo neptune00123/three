@@ -1,0 +1,51 @@
+server:
+  port: 9992
+  servlet:
+    context-path: /cmfz
+    jsp:
+      init-parameters:
+        development: true
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+    date-format: yyyy-MM-dd
+  datasource:
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/zmfz?serverTimezone=GMT&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+      force-request: true
+      force-response: true
+    jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd
+
+
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 10GB
+  main:
+    allow-bean-definition-overriding: true
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.baizhi.entity
+
+logging:
+  level:
+    root: info
+    com.baizhi.dao: debug
